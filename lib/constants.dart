@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 class K {
+  static const MAIN_COLOR =Color(0xFF26A59A);
   static const textFieldDecoration = InputDecoration(
 
       focusedBorder: OutlineInputBorder(

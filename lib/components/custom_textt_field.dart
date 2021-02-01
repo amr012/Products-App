@@ -16,6 +16,7 @@ class CustomTextField extends StatelessWidget {
   final String initialValue;
   final bool isPassword;
   final Color errorColor;
+  final Color backGroundColor;
 
   CustomTextField(
       {this.padding,
@@ -29,6 +30,7 @@ class CustomTextField extends StatelessWidget {
       this.errorColor = Colors.red,
       this.type = TextInputType.text,
       this.maxLines = 1,
+        this.backGroundColor,
       this.isReadOnly = false});
 
   @override
@@ -44,7 +46,7 @@ class CustomTextField extends StatelessWidget {
             height: 43,
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(20),
-              color: Colors.grey.shade100,
+              color: backGroundColor,
             ),
             child: TextFormField(
                 initialValue: initialValue,

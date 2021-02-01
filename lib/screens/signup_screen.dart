@@ -6,7 +6,9 @@ import 'package:get/get.dart';
 import 'package:modal_progress_hud/modal_progress_hud.dart';
 import 'package:my_products/components/custom_textt_field.dart';
 import 'package:my_products/components/custon_button.dart';
+import 'package:my_products/constants.dart';
 import 'package:my_products/controllers/sign_up_controller.dart';
+import 'package:my_products/routes/app_routes.dart';
 
 class SignUpScreen extends StatelessWidget {
   final _controller = Get.put(SignUpController());
@@ -52,12 +54,14 @@ class SignUpScreen extends StatelessWidget {
                 ),
                 Text(
                   "Register",
-                  style: TextStyle(fontSize: 35, fontWeight: FontWeight.w500),
+                  style: TextStyle(color: K.MAIN_COLOR,
+                      fontSize: 50, fontWeight: FontWeight.bold),
                 ),
                 SizedBox(
                   height: 15,
                 ),
                 Obx(() => CustomTextField(
+                  backGroundColor: Colors.grey.shade200,
                   onChanged: (v) {
                     _controller.changeName(v);
                   },
@@ -66,6 +70,7 @@ class SignUpScreen extends StatelessWidget {
                   errorLabel: _controller.name.error,
                 )),
                 Obx(() => CustomTextField(
+                  backGroundColor: Colors.grey.shade200,
                   onChanged: (v) {
                     _controller.changeUserName(v);
                   },
@@ -74,6 +79,7 @@ class SignUpScreen extends StatelessWidget {
                   type: TextInputType.emailAddress,
                 )),
                 Obx(() => CustomTextField(
+                  backGroundColor: Colors.grey.shade200,
                   label: "Password",
                   onChanged: (v) {
                     _controller.changePassword(v);
@@ -83,6 +89,7 @@ class SignUpScreen extends StatelessWidget {
                   isPassword: true,
                 )),
                 Obx(() => CustomTextField(
+                  backGroundColor: Colors.grey.shade200,
                   onChanged: (v) {
                     _controller.changePhone(v);
                   },
@@ -90,11 +97,27 @@ class SignUpScreen extends StatelessWidget {
                   errorLabel: _controller.phone.error,
                   type: TextInputType.phone,
                 )),
+                SizedBox(height: 20,),
                 CustomButton(
+                  color: K.MAIN_COLOR,
                   onPress: () {
                     _controller.registerValidation(context);
                   },
                   text: "Register",
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(top: 8,left: 200),
+                  child: GestureDetector(
+                    onTap: (){
+                      Get.toNamed(Routes.SIGNIN_SCREEN);
+                    },
+                    child: Text(
+                      "Login",
+                      style: TextStyle(fontSize: 20,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.orange),
+                    ),
+                  ),
                 )
               ],
             ),

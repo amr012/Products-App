@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:email_validator/email_validator.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
@@ -86,7 +87,7 @@ class SignUpController extends BaseController {
     if (_name.value.isValid() &&
         _userName.value.isValid() &&
         _password.value.isValid() &&
-        _phone.value.isValid()) {
+        _phone.value.isValid() && EmailValidator.validate(_userName.value.value)) {
       _saving.value = true;
       UserModel user = await authServices.register(
           UserModel(
