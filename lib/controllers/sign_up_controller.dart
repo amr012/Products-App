@@ -8,12 +8,12 @@ import 'package:my_products/controllers/auth_controller.dart';
 import 'package:my_products/controllers/base_controller.dart';
 import 'package:my_products/models/user.dart';
 import 'package:my_products/models/validation_item.dart';
-import 'package:my_products/services/auth_services.dart';
+import 'package:my_products/services/registration_services.dart';
 import 'package:my_products/utilis/utility.dart';
 import 'package:permission_handler/permission_handler.dart';
 
 class SignUpController extends BaseController {
-  AuthServices authServices = new AuthServices();
+  SignUpServices _signUpServices = new SignUpServices();
 
   final _image = Rx<String>();
   final _name = ValidationItem().obs;
@@ -73,23 +73,14 @@ class SignUpController extends BaseController {
     }
   }
 
-  // Future<void> createUser(String email, String password) async {
-  //   try{
-  //    await _auth.createUserWithEmailAndPassword(email: email, password: password);
-  //
-  //   }
-  //   catch(e){
-  //     print(e.toString());
-  //   }
-  // }
-
   registerValidation(BuildContext context) async {
     if (_name.value.isValid() &&
         _userName.value.isValid() &&
         _password.value.isValid() &&
-        _phone.value.isValid() && EmailValidator.validate(_userName.value.value)) {
+        _phone.value.isValid() &&
+        EmailValidator.validate(_userName.value.value)) {
       _saving.value = true;
-      UserModel user = await authServices.register(
+      UserModel user = await _signUpServices.register(
           UserModel(
               name: name.value,
               username: userName.value,

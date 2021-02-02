@@ -46,4 +46,7 @@ class AuthController extends BaseController {
       Get.offAllNamed(Routes.SIGNUP_SCREEN);
     }
   }
+  logOut(){
+    _services.signOut();
+  }
 }

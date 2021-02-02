@@ -5,6 +5,7 @@ import 'package:my_products/components/custom_floating_acion_button.dart';
 import 'package:my_products/components/custom_textt_field.dart';
 import 'package:my_products/components/empty_placeholder.dart';
 import 'package:my_products/components/loading_widget.dart';
+import 'package:my_products/controllers/auth_controller.dart';
 import 'package:my_products/controllers/category_controller.dart';
 import 'package:my_products/enums/view_state.dart';
 import 'package:my_products/routes/app_routes.dart';
@@ -33,6 +34,9 @@ class CategoryScreen extends StatelessWidget {
           SizedBox(
             width: 20,
           ),
+          IconButton(icon: Icon(Icons.close), onPressed: (){
+            AuthController.to.logOut();
+          })
         ],
         centerTitle: true,
       ),
